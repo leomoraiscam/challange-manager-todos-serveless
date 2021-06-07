@@ -1,8 +1,8 @@
 import { DynamoDB } from 'aws-sdk';
 
 const devOption = {
-  region: `us-east-1`,
-  endpoint: `https://dynamodb.us-east-1.amazonaws.com/`
+  region: process.env.AWS_REGION,
+  endpoint:  process.env.AWS_DB_URL
 }
 
 const options = {
@@ -11,7 +11,7 @@ const options = {
 }
 
 const isOffline = () => {
-  return false
+  return process.env.IS_OFFLINE
 }
 
 export const document = isOffline() ? 
